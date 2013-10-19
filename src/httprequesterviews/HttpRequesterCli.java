@@ -140,7 +140,7 @@ public class HttpRequesterCli implements HttpRequesterView, HttpRequesterObserve
         o.setRequired(false);
         options.addOption(o);
         
-        o = new Option("t", "treads", true, "Set the number of threads.");
+        o = new Option("t", "threads", true, "Set the number of threads.");
         o.setRequired(false);
         o.setArgs(1);
         options.addOption(o);
