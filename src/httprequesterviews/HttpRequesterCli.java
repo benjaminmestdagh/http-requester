@@ -1,6 +1,7 @@
 package httprequesterviews;
 
 import httprequester.*;
+import java.util.Iterator;
 import org.apache.commons.cli.*;
 
 /**
@@ -28,6 +29,8 @@ public class HttpRequesterCli implements HttpRequesterView, HttpRequesterObserve
         catch(Exception ex)
         {
             System.out.println(ex.getMessage());
+            showOptions();
+            System.exit(1);
         }
     }
     
@@ -118,13 +121,23 @@ public class HttpRequesterCli implements HttpRequesterView, HttpRequesterObserve
             }
         }
     }
+    
+    private void showOptions() 
+    {
+        Iterator i = options.getOptions().iterator();
+        while(i.hasNext())
+        {
+            Option o = (Option) i.next();
+            System.out.printf("-%-3s | --%-9s  %s\n", o.getOpt(), o.getLongOpt(), o.getDescription());
+        }
+    }
 
     private void setOptions()
     {
         Option o;
         options = new Options();
         
-        o = new Option("cli", "cli", false, "Run on the command line");
+        o = new Option("cli", "cli", false, "Run on the command line.");
         o.setRequired(true);
         options.addOption(o);
         

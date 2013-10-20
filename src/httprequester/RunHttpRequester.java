@@ -16,13 +16,13 @@ public class RunHttpRequester
             HttpRequesterController controller;
             Options options = new Options();
             
-            Option o = new Option("cli", "cli", false, "Start from command line");
+            Option o = new Option("cli", "cli", false, "Start from command line.");
             o.setRequired(false);
             options.addOption(o);
             CommandLineParser parser = new BasicParser();
             CommandLine cmd = parser.parse(options, args, true);
             
-            if(cmd.hasOption("cli"))
+            if(cmd.hasOption("cli") | cmd.hasOption("help"))
                 controller = new Controller(hr, Controller.CLI, args);
             else
                 controller = new Controller(hr, Controller.GUI, args);
